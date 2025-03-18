@@ -18,21 +18,29 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("turbolinks:load", function () {
   const menuToggle = document.getElementById("menuToggle");
   const menuContent = document.getElementById("menuContent");
 
-  // メニューを開く/閉じる
-  menuToggle.addEventListener("click", function () {
+  if (menuToggle && menuContent) {
+    // 既存のイベントリスナーを削除して登録し直す
+    menuToggle.removeEventListener("click", toggleMenu);
+    document.removeEventListener("click", closeMenu);
+
+    // 新しくイベントリスナーを登録
+    menuToggle.addEventListener("click", toggleMenu);
+    document.addEventListener("click", closeMenu);
+  }
+
+  function toggleMenu() {
     menuContent.classList.toggle("show");
     menuToggle.classList.toggle("open");
-  });
+  }
 
-  // メニュー外をクリックした場合、メニューを閉じる
-  document.addEventListener("click", function (event) {
+  function closeMenu(event) {
     if (!menuToggle.contains(event.target) && !menuContent.contains(event.target)) {
       menuContent.classList.remove("show");
       menuToggle.classList.remove("open");
     }
-  });
+  }
 });
