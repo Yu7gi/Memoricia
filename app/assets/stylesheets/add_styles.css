@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: #fbfaf5;
+}
+
 .menu-toggle {
   position: fixed;
   top: 20px;
@@ -19,7 +23,7 @@
   right: -250px; /* 初期状態は非表示 */
   width: 250px;
   height: 100%;
-  background: white;
+  background: #fffffe;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   transition: right 0.3s ease-in-out;
   padding-top: 60px;
@@ -46,6 +50,7 @@
 /* メニューが開いた状態 */
 #menuContent.show {
   right: 0;
+  background-color: #fffffe;
 }
 
 /* ハンバーガーアイコンのデザイン */
