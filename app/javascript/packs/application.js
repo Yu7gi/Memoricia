@@ -18,6 +18,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+// ハンバーガーメニューのアニメーション
 document.addEventListener("turbolinks:load", function () {
   const menuToggle = document.getElementById("menuToggle");
   const menuContent = document.getElementById("menuContent");
@@ -42,5 +43,21 @@ document.addEventListener("turbolinks:load", function () {
       menuContent.classList.remove("show");
       menuToggle.classList.remove("open");
     }
+  }
+});
+
+// top画面文章切り替えアニメーション
+document.addEventListener("turbolinks:load", function () {
+  let arrow = document.getElementById("arrow");
+  let content1 = document.getElementById("content1");
+  let content2 = document.getElementById("content2");
+
+  if (arrow) { 
+    arrow.addEventListener("click", function () {
+      content1.classList.remove("show");
+      content2.classList.add("show");
+    });
+  } else {
+    console.error("Element with id 'arrow' not found.");
   }
 });
