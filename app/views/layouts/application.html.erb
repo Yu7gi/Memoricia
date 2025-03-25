@@ -27,8 +27,12 @@
         <a href="/" class="d-flex justify-content-center">
           <%= image_tag 'icon-memoricia.png', size: "100x100" %>
         </a>
-        <li><%= link_to 'Log in', root_path %></li>
-        <li><%= link_to 'Sign up', root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Log in', new_user_session_path %></li>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <% end %>
       </ul>
     </div>
 

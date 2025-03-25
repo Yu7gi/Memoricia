@@ -8,6 +8,7 @@ body{
   background-color: #fbfaf5;
 }
 
+
 .menu-toggle {
   position: fixed;
   top: 20px;
@@ -53,6 +54,7 @@ body{
   background-color: #fffffe;
 }
 
+
 /* ハンバーガーアイコンのデザイン */
 .navbar-toggler {
   background-color: transparent;
@@ -86,6 +88,8 @@ body{
   transform: translateY(-6px) rotate(-45deg);
 }
 
+
+/* top画面文字切り替え */
 .fade {
   opacity: 0;
   visibility: hidden;
@@ -104,4 +108,117 @@ body{
   transform: translate(-50%, -50%);
   text-align: center;
   width: 80%;
+}
+
+
+/* 新規登録、ログイン画面デザイン */
+.stich {
+  border: 2px dashed #fef2e7;
+  box-shadow: 0 0 0 8px #c7a07e;
+  padding: 15px;
+  background: #d3ad8c;
+  border-radius: 10px;
+  color: #fff;
+}
+
+
+/* 新規登録、ログイン画面ボタンデザイン */
+.background_btn {
+  position: relative;
+  width: 100%;
+  max-width: 350px; /* ボタンの幅 */
+  color: #fff;
+  font-weight: 600;
+  background:#bc7926;
+  transition: all 0.5s;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding: 1em 2em;
+}
+
+/* マウスオーバーした際のデザイン */
+.background_btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+  border: 2px solid #b77134; /* 枠の色 */
+  transform: scale(1.5,1.5);
+  opacity: 0;
+  z-index: 1;
+}
+.background_btn:hover {
+  background: #fff;
+  color: #b77134;
+}
+.background_btn:hover::after {
+  opacity: 1;
+  transform: scale(1,1);
+}
+
+
+.circle_btn {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 200px; /* ボタンの最大幅 */
+  padding: 3em 2em;
+  color: #bc7926; /* 文字色 */
+  transition: 0.3s ease-in-out;
+  font-weight: bold;
+  text-decoration: none  !important;
+}
+
+.circle_btn::before, .circle_btn::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 50%;
+}
+
+.circle_btn::before {
+  width: 0.5em;
+  height: 0.5em;
+  left: 1em;
+  border-top: solid 2px #fff; /* 矢印の色 */
+  border-right: solid 2px #fff; /* 矢印の色 */
+  z-index: 2;
+  transform: translateY(-50%) rotate(45deg);
+  transition: all 0.3s;
+}
+
+.circle_btn::after {
+  left: 0;
+  background: #d3ad8c; /* 背景色 */
+  z-index: 1;
+  width: 3em;
+  height: 3em;
+  border-radius: 3em;
+  transform: translateY(-50%);
+  transition: all 0.5s;
+}
+
+.circle_btn span {
+  position: relative;
+  transition: all 0.3s;
+  z-index: 3;
+}
+
+/* マウスオーバーした際のデザイン */
+.circle_btn:hover span {
+  color: #fff; /* 文字色 */
+}
+
+.circle_btn:hover:before {
+  left: 1rem;
+}
+
+.circle_btn:hover:after {
+  right: 0;
+  width: 100%;
 }
