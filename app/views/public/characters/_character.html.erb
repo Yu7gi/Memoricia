@@ -1,4 +1,4 @@
-<div class="container-fluid" id="character_preview_container"
+<div class="container-fluid py-5" id="character_preview_container"
      style="<% if @character.background_image.present? %>
                background-image: url('<%= @character.background_image %>');
                background-size: cover;
@@ -15,16 +15,16 @@
         <%= button_tag "背景画像を削除", id: "reset_background", type: "button", class: "btn btn-danger ml-3 my-3" %>
       </div>
       <div class="row">
-        <%= f.label :background_color, "背景色", class: "ml-2 mr-2" %><%= f.color_field :background_color, value: @character.background_color, class: "form-control col-md-1" %>
-        <%= f.label :form_color, "詳細背景色", class: " ml-2 mr-2" %><%= f.color_field :form_color, value: @character.form_color, class: "form-control col-md-1" %>
-        <%= f.label :text_color, "文字色", class: "ml-2 mr-2" %><%= f.color_field :text_color, value: @character.text_color, class: "form-control col-md-1" %>
+        <%= f.label :background_color, "背景色", class: "ml-2 mr-2" %><%= f.color_field :background_color, value: @character.background_color, class: "form-control col-md-1 mb-2" %>
+        <%= f.label :form_color, "詳細背景色", class: " ml-2 mr-2" %><%= f.color_field :form_color, value: @character.form_color, class: "form-control col-md-1 mb-2" %>
+        <%= f.label :text_color, "文字色", class: "ml-2 mr-2" %><%= f.color_field :text_color, value: @character.text_color, class: "form-control col-md-1 mb-2" %>
       </div>
     <% end %>
 
 
-    <div class="col-md-6 my-3 character-container text-center" style="color: <%= @character.text_color %>; background-color: <%= @character.form_color %>;">
+    <div class="col-md-6 character-container text-center" style="color: <%= @character.text_color %>; background-color: <%= @character.form_color %>;">
       <div class="row">
-        <div class="col-7 mt-3 mb-4 mx-auto">
+        <div class="col-7 mt-5 mb-4 mx-auto">
           <% if action_name == "new" || action_name == "edit" %>
             <%= f.text_field :name, value: @character.name, placeholder: "キャラクター名", class: "form-control" %>
           <% else %>
