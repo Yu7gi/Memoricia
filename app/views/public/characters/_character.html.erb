@@ -6,84 +6,89 @@
             <% else %>
                background-color: <%= @character.background_color %>;
             <% end %>">
+  <div class="row">
 
-  <%= form_with model: @character, local: true do |f| %>
-
-    <% if action_name == "new" || action_name == "edit" %>
-      <div class="row">
-        <%= f.file_field :background_image, accept: "image/*", id: "character_background_image", class: "form-control col-md-4 mt-3" %>
-        <%= button_tag "背景画像を削除", id: "reset_background", type: "button", class: "btn btn-danger ml-3 my-3" %>
-      </div>
-      <div class="row">
-        <%= f.label :background_color, "背景色", class: "ml-2 mr-2" %><%= f.color_field :background_color, value: @character.background_color, class: "form-control col-md-1 mb-2" %>
-        <%= f.label :form_color, "詳細背景色", class: " ml-2 mr-2" %><%= f.color_field :form_color, value: @character.form_color, class: "form-control col-md-1 mb-2" %>
-        <%= f.label :text_color, "文字色", class: "ml-2 mr-2" %><%= f.color_field :text_color, value: @character.text_color, class: "form-control col-md-1 mb-2" %>
-      </div>
-    <% end %>
-
-
-    <div class="col-md-6 character-container text-center" style="color: <%= @character.text_color %>; background-color: <%= @character.form_color %>;">
-      <div class="row">
-        <div class="col-7 mt-5 mb-4 mx-auto">
-          <% if action_name == "new" || action_name == "edit" %>
-            <%= f.text_field :name, value: @character.name, placeholder: "キャラクター名", class: "form-control" %>
-          <% else %>
-            <h3><%= @character.name || "キャラクター名" %></h3>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5 mt-3 mx-auto">
-          <% if action_name == "new" || action_name == "edit" %>
-            <%= f.text_field :age, value: @character.age, class: "form-control", placeholder: "年齢" %>
-          <% else %>
-            <h5><%= @character.age || "年齢" %></h5>
-          <% end %>
-        </div>
-        <div class="col-md-5 mt-3 mx-auto"> 
-          <% if action_name == "new" || action_name == "edit" %>
-            <%= f.text_field :sex, value: @character.sex, class: "form-control", placeholder: "性別" %>
-          <% else %>
-            <h5><%= @character.sex || "性別" %></h5>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-5 mt-3 mx-auto">
-          <% if action_name == "new" || action_name == "edit" %>
-            <%= f.text_field :height, value: @character.height, class: "form-control", placeholder: "身長" %>
-          <% else %>
-            <h5><%= @character.height || "身長" %></h5>
-          <% end %>
-        </div>
-        <div class="col-md-5 mt-3 mx-auto">
-          <% if action_name == "new" || action_name == "edit" %>
-            <%= f.text_field :weight, value: @character.weight, class: "form-control", placeholder: "体重" %>
-          <% else %>
-            <h5>体重: <%= @character.weight || "" %></h5>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-10 my-4 mx-auto"> 
-          <% if action_name == "new" || action_name == "edit" %>
-            <%= f.text_area :detail, value: @character.detail, class: "form-control detail-text", placeholder: "キャラクター詳細" %>
-          <% else %>
-            <p class="detail-text"><%= @character.detail || "キャラクター詳細" %></p>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-5 my-3 mx-auto">
-          <% if action_name == "new" %>
-            <%= f.submit "新規作成", class: "form-control" %>
-          <% elsif action_name == "edit" %>
-            <%= f.submit "変更保存", class: "form-control" %>
-          <% end %>
-        </div>
-      </div>
+    <div class="col-md-6">
     </div>
 
-  <% end %>
+    <div class="col-md-6">
+
+      <%= form_with model: @character, local: true do |f| %>
+
+        <% if action_name == "new" || action_name == "edit" %>
+          <%= f.file_field :background_image, accept: "image/*", id: "character_background_image", class: "form-control col-md-11 mt-3" %>
+          <%= button_tag "背景画像を削除", id: "reset_background", type: "button", class: "btn btn-danger ml-3 my-3" %>
+          <div class="row">
+            <%= f.label :background_color, "背景", class: "ml-2 mr-2" %><%= f.color_field :background_color, value: @character.background_color, class: "form-control col-md-2 mb-2" %>
+            <%= f.label :form_color, "詳細背景", class: " ml-2 mr-2" %><%= f.color_field :form_color, value: @character.form_color, class: "form-control col-md-2 mb-2" %>
+            <%= f.label :text_color, "文字", class: "ml-2 mr-2" %><%= f.color_field :text_color, value: @character.text_color, class: "form-control col-md-2 mb-2" %>
+          </div>
+        <% end %>
+
+
+        <div class="col-md-11 character-container text-center" style="color: <%= @character.text_color %>; background-color: <%= @character.form_color %>;">
+          <div class="row">
+            <div class="col-7 mt-5 mb-4 mx-auto">
+              <% if action_name == "new" || action_name == "edit" %>
+                <%= f.text_field :name, value: @character.name, placeholder: "キャラクター名", class: "form-control" %>
+              <% else %>
+                <h3><%= @character.name || "キャラクター名" %></h3>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 mt-3 mx-auto">
+              <% if action_name == "new" || action_name == "edit" %>
+                <%= f.text_field :age, value: @character.age, class: "form-control", placeholder: "年齢" %>
+              <% else %>
+                <h5>年齢: <%= @character.age || "" %></h5>
+              <% end %>
+            </div>
+            <div class="col-md-5 mt-3 mx-auto"> 
+              <% if action_name == "new" || action_name == "edit" %>
+                <%= f.text_field :sex, value: @character.sex, class: "form-control", placeholder: "性別" %>
+              <% else %>
+                <h5>性別: <%= @character.sex || "" %></h5>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-5 mt-3 mx-auto">
+              <% if action_name == "new" || action_name == "edit" %>
+                <%= f.text_field :height, value: @character.height, class: "form-control", placeholder: "身長" %>
+              <% else %>
+                <h5>身長: <%= @character.height || "" %></h5>
+              <% end %>
+            </div>
+            <div class="col-md-5 mt-3 mx-auto">
+              <% if action_name == "new" || action_name == "edit" %>
+                <%= f.text_field :weight, value: @character.weight, class: "form-control", placeholder: "体重" %>
+              <% else %>
+                <h5>体重: <%= @character.weight || "" %></h5>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-10 my-4 mx-auto"> 
+              <% if action_name == "new" || action_name == "edit" %>
+                <%= f.text_area :detail, value: @character.detail, class: "form-control detail-text", placeholder: "キャラクター詳細" %>
+              <% else %>
+                <p class="detail-text"><%= @character.detail || "キャラクター詳細" %></p>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5 my-3 mx-auto">
+              <% if action_name == "new" %>
+                <%= f.submit "新規作成", class: "form-control" %>
+              <% elsif action_name == "edit" %>
+                <%= f.submit "変更保存", class: "form-control" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
 </div>
