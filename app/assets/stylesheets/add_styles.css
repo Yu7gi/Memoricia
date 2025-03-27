@@ -4,7 +4,13 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
+
 body{
+  height: 100%;
   background-color: #fbfaf5;
 }
 
@@ -28,7 +34,7 @@ body{
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   transition: right 0.3s ease-in-out;
   padding-top: 60px;
-  z-index: 1000;
+  z-index: 2000;
 }
 
 /* メニューリスト */
@@ -171,7 +177,7 @@ body{
   color: #bc7926; /* 文字色 */
   transition: 0.3s ease-in-out;
   font-weight: bold;
-  text-decoration: none  !important;
+  text-decoration: none !important;
 }
 
 .circle_btn::before, .circle_btn::after {
@@ -221,4 +227,26 @@ body{
 .circle_btn:hover:after {
   right: 0;
   width: 100%;
+}
+
+#character_preview_container {
+  width: 100%;
+  min-height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+/* キャラクター情報コンテナ */
+.character-container {
+  min-height: 600px;
+  height: 100%;
+}
+
+/* キャラクター詳細欄 */
+.detail-text {
+  height: 450px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
 }
