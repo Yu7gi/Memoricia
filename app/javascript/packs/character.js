@@ -56,3 +56,57 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const imageInput = document.getElementById("imageInput");
+  const imageDropArea = document.getElementById("imageDropArea");
+  const previewImage = document.getElementById("previewImage");
+  const deleteButton = document.getElementById("deleteImage");
+  const removeImageFlag = document.getElementById("removeImageFlag");
+  const dropAreaText = document.getElementById("dropAreaText");
+
+  function handleFile(file) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      previewImage.src = event.target.result;
+      previewImage.classList.remove("hidden");
+      deleteButton.classList.remove("hidden");
+      dropAreaText.classList.add("hidden");
+    };
+    reader.readAsDataURL(file);
+  }
+
+  imageDropArea.addEventListener("click", function () {
+    imageInput.click();
+  });
+
+  imageInput.addEventListener("change", function () {
+    if (imageInput.files.length > 0) {
+      handleFile(imageInput.files[0]);
+      removeImageFlag.value = "false"; // 画像を選択したら削除フラグをリセット
+    }
+  });
+
+  imageDropArea.addEventListener("dragover", function (event) {
+    event.preventDefault();
+  });
+
+  imageDropArea.addEventListener("drop", function (event) {
+    event.preventDefault();
+    if (event.dataTransfer.files.length > 0) {
+      imageInput.files = event.dataTransfer.files;
+      handleFile(imageInput.files[0]);
+      removeImageFlag.value = "false"; // 画像を選択したら削除フラグをリセット
+    }
+  });
+
+  deleteButton.addEventListener("click", function () {
+    previewImage.src = "";
+    previewImage.classList.add("hidden");
+    deleteButton.classList.add("hidden");
+    imageInput.value = "";
+    dropAreaText.classList.remove("hidden");
+    removeImageFlag.value = "true"; // 画像削除フラグをセット
+  });
+});
