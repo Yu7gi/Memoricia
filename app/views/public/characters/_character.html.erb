@@ -6,15 +6,24 @@
             <% else %>
                background-color: <%= @character.background_color %>;
             <% end %>">
+
   <div class="row">
 
-    <div class="col-md-6">
-    </div>
-
-    <div class="col-md-6">
-
-      <%= form_with model: @character, local: true do |f| %>
-
+    <%= form_with model: @character, local: true do |f| %>
+      <div class="col-md-6">
+        <div class="col-md-6">
+          <div class="image-upload-container">
+            <input type="file" id="imageInput" accept="image/*" hidden>
+            <div id="imageDropArea" class="drop-area">
+              <p>画像をドラッグ＆ドロップ または クリックして選択</p>
+              <img id="previewImage" src="" alt="Preview" class="hidden">
+            </div>
+            <button id="deleteImage" class="hidden btn btn-danger">削除</button>
+          </div>
+        </div>
+      </div>
+       
+      <div class="col-md-6">
         <% if action_name == "new" || action_name == "edit" %>
           <%= f.file_field :background_image, accept: "image/*", id: "character_background_image", class: "form-control col-md-11 mt-3" %>
           <%= button_tag "背景画像を削除", id: "reset_background", type: "button", class: "btn btn-danger ml-3 my-3" %>
@@ -87,8 +96,8 @@
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 
 </div>
