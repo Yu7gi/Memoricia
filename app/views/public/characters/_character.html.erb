@@ -7,19 +7,18 @@
                background-color: <%= @character.background_color %>;
             <% end %>">
 
-  <div class="row">
-
-    <%= form_with model: @character, local: true do |f| %>
+  <%= form_with model: @character, local: true do |f| %>
+    <div class="row character-row">
       <div class="col-md-6">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <div class="image-upload-container">
             <input type="file" id="imageInput" accept="image/*" hidden>
             <div id="imageDropArea" class="drop-area">
-              <p>画像をドラッグ＆ドロップ または クリックして選択</p>
+              <p id="dropAreaText">画像をドラッグ＆ドロップ または クリックして選択</p>
               <img id="previewImage" src="" alt="Preview" class="hidden">
             </div>
-            <button id="deleteImage" class="hidden btn btn-danger">削除</button>
           </div>
+          <button id="deleteImage" class="hidden btn btn-danger text-center">削除</button>
         </div>
       </div>
        
@@ -97,7 +96,7 @@
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
 </div>
