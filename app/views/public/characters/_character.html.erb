@@ -10,15 +10,17 @@
   <%= form_with model: @character, local: true do |f| %>
     <div class="row character-row">
       <div class="col-md-6">
-        <div class="col-md-8">
+        <div class="col-md-11">
           <div class="image-upload-container">
-            <input type="file" id="imageInput" accept="image/*" hidden>
-            <div id="imageDropArea" class="drop-area">
-              <p id="dropAreaText">画像をドラッグ＆ドロップ または クリックして選択</p>
-              <img id="previewImage" src="" alt="Preview" class="hidden">
-            </div>
+            <% if action_name == "new" || action_name == "edit" %>
+              <%= f.file_field :standing_picture, accept: "image/*", id: "imageInput", class: "form-control col-md-11 mt-3" %>
+              <div id="imageDropArea" class="drop-area">
+                <p id="dropAreaText">画像をドラッグ＆ドロップ または クリックして選択</p>
+                <img id="previewImage" src="" alt="Preview" class="hidden">
+              </div>
+            <% end %>
           </div>
-          <button id="deleteImage" class="hidden btn btn-danger text-center">削除</button>
+          <%= button_tag "削除", id: "deleteImage", type: "button", class: "hidden btn btn-danger" %>
         </div>
       </div>
        
